@@ -25,10 +25,11 @@
           <%= form_tag dislike_path(resource), remote: true , method: :post do | form |%>
           <%= button_tag "-", id: "resourceDislike-#{resource.id}"%>
           <% end %></td>-->
-          <td>
-          <%= button_to "+", like_path(resource), remote: true %>
-          <%= resource.score, id: "resourceScore-#{resource.id}"%>
-          <%= button_to "-", dislike_path(resource), remote: true %>
+	      <td>
+	      <%= button_to "+", like_path(resource), remote: true, id: "resourceLike-#{resource.id}"%>
+	      <p id="resourceScore-<%= resource.id %>"><%= resource.score %></p>
+	      <%= button_to "-", dislike_path(resource), remote: true, id: "resourceDislike-#{resource.id}" %>
+	      </td>
         <td><%= resource.name %></td>
         <td><%= resource.description %></td>
         <td><%= Category.find(resource.category_id).name %></td>
