@@ -18,13 +18,6 @@
   <tbody>
     <% @resources.each do |resource| %>
       <tr>
-		  <!--<td><%= form_tag like_path(resource), remote: true , method: :post do | form |%>
-          <%= button_tag "+", id: "resourceLike-#{resource.id}"%>
-          <% end %>
-          <%= resource.score %>
-          <%= form_tag dislike_path(resource), remote: true , method: :post do | form |%>
-          <%= button_tag "-", id: "resourceDislike-#{resource.id}"%>
-          <% end %></td>-->
 	      <td>
 	      <%= button_to "+", like_path(resource), remote: true, id: "resourceLike-#{resource.id}"%>
 	      <p id="resourceScore-<%= resource.id %>"><%= resource.score %></p>
