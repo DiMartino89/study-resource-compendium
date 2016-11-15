@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/users', to: 'users#create'
   
-  get '/resources/:id/like', to: 'resources#like', as: "like"
-  get '/resources/:id/dislike', to: 'resources#dislike', as: "dislike"  
+  post '/resources/:id/like', to: 'resources#like', as: "like"
+  post '/resources/:id/dislike', to: 'resources#dislike', as: "dislike"  
   
   resources :users
   resources :resources

@@ -18,14 +18,17 @@
   <tbody>
     <% @resources.each do |resource| %>
       <tr>
-      	<!--<td><%= link_to "DOWN",dislike_path(resource) %> - <%= resource.score %> - <%= link_to "UP",like_path(resource) %></td>-->
-        <td><%= form_tag like_path(resource) , method: :get do | form |%>
+		  <!--<td><%= form_tag like_path(resource), remote: true , method: :post do | form |%>
           <%= button_tag "+", id: "resourceLike-#{resource.id}"%>
           <% end %>
           <%= resource.score %>
-          <%= form_tag dislike_path(resource) , method: :get do | form |%>
+          <%= form_tag dislike_path(resource), remote: true , method: :post do | form |%>
           <%= button_tag "-", id: "resourceDislike-#{resource.id}"%>
-          <% end %></td>
+          <% end %></td>-->
+          <td>
+          <%= button_to "+", like_path(resource), remote: true %>
+          <%= resource.score, id: "resourceScore-#{resource.id}"%>
+          <%= button_to "-", dislike_path(resource), remote: true %>
         <td><%= resource.name %></td>
         <td><%= resource.description %></td>
         <td><%= Category.find(resource.category_id).name %></td>

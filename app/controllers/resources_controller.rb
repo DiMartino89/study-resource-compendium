@@ -3,13 +3,14 @@ class ResourcesController < ApplicationController
 
   before_filter :authorize
   
-  # GET /resources/1/like
+  # POST /resources/1/like
   def like
     @resource.score = @resource.score + 1
 
       respond_to do |format|
         if @resource.save
           format.html { redirect_to resources_url, notice: 'Resource was liked successfully.' }
+          format.js   {} 
           format.json { render :show, status: :ok, location: @resource }
         else
           format.html { render :edit }
@@ -18,13 +19,14 @@ class ResourcesController < ApplicationController
       end
   end
   
-  # GET /resources/1/dislike
+  # POST /resources/1/dislike
   def dislike
     @resource.score = @resource.score - 1
     
       respond_to do |format|
         if @resource.save
           format.html { redirect_to resources_url, notice: 'Resource was disliked successfully.' }
+          format.js   {}
           format.json { render :show, status: :ok, location: @resource }
         else
           format.html { render :edit }
