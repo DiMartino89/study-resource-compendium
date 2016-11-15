@@ -34,7 +34,7 @@
         <td><%= resource.description %></td>
         <td><%= Category.find(resource.category_id).name %></td>
 		<td>
-			<% unless resource.link.empty? %>
+			<% unless resource.link == nil || resource.link.empty? %>
 				<a href="<%= resource.link %>" target="_blank">Open Link</a>
 			<% end %>	
 		</td>	
