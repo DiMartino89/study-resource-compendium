@@ -8121,3 +8121,75 @@ Processing by ResourcesController#index as HTML
   [1m[36mUser Load (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
   Rendered resources/index.html.erb within layouts/application (3.0ms)
 Completed 200 OK in 125ms (Views: 122.3ms | ActiveRecord: 1.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (7.0ms)[0m  DELETE FROM "categories"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Git"], ["description", "Version control"], ["created_at", "2016-11-15 15:07:18.232107"], ["updated_at", "2016-11-15 15:07:18.232107"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Ruby"], ["description", "Object Oriented Programming language"], ["created_at", "2016-11-15 15:07:18.247117"], ["updated_at", "2016-11-15 15:07:18.247117"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36mSQL (5.0ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Martin"], ["email", "test@test.com"], ["password_digest", "$2a$10$0I06p4Ukb7nJrN0Uxvqwie7cVCaDNSpUbzNQapG85ci2SjCk52ZSG"], ["created_at", "2016-11-15 15:07:18.363198"], ["updated_at", "2016-11-15 15:07:18.363198"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Timo"], ["email", "test2@test.com"], ["password_digest", "$2a$10$8XIsiGKFrYHYGaNpLC2YLebCgIU9zdRz/wq7m7Pyz4wk5WC9T8lxK"], ["created_at", "2016-11-15 15:07:18.461259"], ["updated_at", "2016-11-15 15:07:18.461259"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (7.0ms)[0m  DELETE FROM "resources"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "resources" ("name", "description", "link", "last_modified", "owner_id", "score", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["name", "GitHub"], ["description", "How people build software"], ["link", "https://github.com/"], ["last_modified", "2016-11-15"], ["owner_id", "2"], ["score", 0], ["category_id", "2"], ["created_at", "2016-11-15 15:07:18.513295"], ["updated_at", "2016-11-15 15:07:18.513295"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "resources" ("name", "description", "link", "last_modified", "owner_id", "score", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "RubyOnRails"], ["description", "Imagine what you could build if you learned Ruby on Rails..."], ["link", "http://rubyonrails.org/"], ["last_modified", "2016-11-15"], ["owner_id", "3"], ["score", 0], ["category_id", "3"], ["created_at", "2016-11-15 15:07:18.523302"], ["updated_at", "2016-11-15 15:07:18.523302"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+
+
+Started GET "/" for ::1 at 2016-11-15 16:08:38 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ResourcesController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 19ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2016-11-15 16:08:38 +0100
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 857ms (Views: 855.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/resources.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/scaffolds.self-cc9bb6ef8f36679d7adfde4cd580f448354ffe39cfc7099c7aa0c4e7d494f534.css?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/categories.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/categories.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/resources.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-11-15 16:08:39 +0100
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2016-11-15 16:08:39 +0100

@@ -1,6 +1,17 @@
 class UsersController < ApplicationController
 
+  def index
+	@users = User.all
+  end
+  
+  def show
+  end
+  
+  def edit
+  end
+  
   def new
+	@user = User.new 
   end
 
   def create
@@ -10,6 +21,15 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       redirect_to '/signup'
+    end
+  end
+  
+  def update
+    if user.update(user_params)
+	  session[:user_id] = user.id
+      redirect_to '/'
+    else
+      redirect_to '/'
     end
   end
 

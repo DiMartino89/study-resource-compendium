@@ -4,7 +4,9 @@ class FeaturesTest < ActionDispatch::IntegrationTest
   include ActiveJob::TestHelper
   
   test "like resource without any likes yet" do
-    resource = resources(:one)
+	login_for_capybara(users(:one))
+	
+	resource = resources(:one)
     visit resources_path
     assert page.has_content? resource.name
 
