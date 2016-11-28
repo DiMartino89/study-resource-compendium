@@ -6,6 +6,7 @@ class CreateResources < ActiveRecord::Migration
       t.string :category_id
       t.string :link
       t.date :last_modified
+	  t.references :user, foreign_key: true
 
       t.timestamps null: false
     end
