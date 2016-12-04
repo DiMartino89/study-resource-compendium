@@ -1,6 +1,6 @@
 language: ruby
 rvm:
- - 2.2
+ - 2.2.4
  # these two trigger incompatibilities during gem resolution/ or installation in general, skipping:
  #- jruby
  #- rbx-2
