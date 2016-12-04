@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>StudyResourceCompendium</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Study Resource Compendium</title>
+    <%= csrf_meta_tags %>
 
-<% if current_user %>
-  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
-<% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-<% end %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<%= yield %>
-
-</body>
+  <body> 
+	<hr>
+	<% if current_user %>
+	  Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %>
+	<% else %>
+	  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+	<% end %>
+	<hr>
+	<hr>
+		<span><%= link_to "New Resource", new_resource_path %></span> | <span><%= link_to "New Category", new_category_path %></span>
+	<hr>
+	<%= yield %>	
+  </body>
 </html>

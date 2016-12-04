@@ -4,7 +4,7 @@
       <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
 
       <ul>
-      <% @resource.errors.full_messages.each do |message| %>
+      <% resource.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -20,17 +20,18 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :category_id %><br>
-    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a Category", :required => true) %>
-  </div>
-  <div class="field">
     <%= f.label :link %><br>
     <%= f.text_field :link %>
   </div>
   <div class="field">
-    <%= f.label :file %>
-    <%= f.file_field :file %>
+    <%= f.label :category_id %><br>
+    <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a Category", :required => true) %>
   </div>
+  
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :score %>
+  <%= f.hidden_field :last_modified %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

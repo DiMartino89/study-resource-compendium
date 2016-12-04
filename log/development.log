@@ -8564,3 +8564,319 @@ Started GET "/login" for ::1 at 2016-11-25 14:50:01 +0100
 Processing by SessionsController#new as HTML
   Rendered sessions/new.html.erb within layouts/application (0.0ms)
 Completed 200 OK in 127ms (Views: 126.8ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (15.6ms)[0m  [1mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (218.8ms)[0m  CREATE TABLE "resources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "category_id" varchar, "link" varchar, "last_modified" date, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "score" integer) 
+  [1m[36m (15.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.0ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20161107173116')
+  [1m[36m (15.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20161023093159')[0m
+  [1m[35m (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20161023093248')
+  [1m[36m (15.6ms)[0m  [1mCREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (15.6ms)[0m  CREATE TABLE "resources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "category_id" varchar, "link" varchar, "last_modified" date, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "file_file_name" varchar, "file_content_type" varchar, "file_file_size" integer, "file_updated_at" datetime, "score" integer) 
+  [1m[36m (15.6ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (15.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.0ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (15.6ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.0ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20161107173116')
+  [1m[36m (0.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20161023093159')[0m
+  [1m[35m (15.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20161023093248')
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mSQL (15.6ms)[0m  DELETE FROM "categories"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Git"], ["description", "Version control"], ["created_at", "2016-12-04 01:29:56.346725"], ["updated_at", "2016-12-04 01:29:56.346725"]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (15.6ms)[0m  [1mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Ruby"], ["description", "Object Oriented Programming language"], ["created_at", "2016-12-04 01:29:56.362351"], ["updated_at", "2016-12-04 01:29:56.362351"]]
+  [1m[35m (0.0ms)[0m  commit transaction
+  [1m[36mSQL (15.6ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Martin' LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Martin"], ["email", "test@test.com"], ["password_digest", "$2a$10$LggD37mfcllHqmO0O/kCjO4/XK2PvxELPqY33uqKFjuGkNRPlDEm."], ["created_at", "2016-12-04 01:29:56.549852"], ["updated_at", "2016-12-04 01:29:56.549852"]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mUser Exists (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Timo' LIMIT 1[0m
+  [1m[35mSQL (0.0ms)[0m  INSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Timo"], ["email", "test2@test.com"], ["password_digest", "$2a$10$xNASRpYuY48ueh7Gl6zUz.lPtENnskIDOyCCRdQLiOZSf0h0/RROO"], ["created_at", "2016-12-04 01:29:56.643608"], ["updated_at", "2016-12-04 01:29:56.643608"]]
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35mSQL (0.0ms)[0m  DELETE FROM "resources"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (15.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateResources (20161023093159)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at C:/Users/Martin24989/Desktop/HTW/Semester_M_I/Media-Programming/Projekt/study-resource-compendium/db/migrate/20161023093159_create_resources.rb:12)
+  [1m[35m (0.0ms)[0m  CREATE TABLE "resources" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "link" varchar, "last_modified" date, "user_id" integer, "score" integer, "category_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161023093159"]]
+  [1m[35m (0.0ms)[0m  commit transaction
+Migrating to CreateCategories (20161023093248)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at C:/Users/Martin24989/Desktop/HTW/Semester_M_I/Media-Programming/Projekt/study-resource-compendium/db/migrate/20161023093248_create_categories.rb:7)
+  [1m[35m (0.0ms)[0m  CREATE TABLE "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161023093248"]]
+  [1m[35m (0.0ms)[0m  commit transaction
+Migrating to CreateUsers (20161107173116)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+DEPRECATION WARNING: `#timestamps` was called without specifying an option for `null`. In Rails 5, this behavior will change to `null: false`. You should manually specify `null: true` to prevent the behavior of your existing migrations from changing. (called from block in change at C:/Users/Martin24989/Desktop/HTW/Semester_M_I/Media-Programming/Projekt/study-resource-compendium/db/migrate/20161107173116_create_users.rb:8)
+  [1m[35m (0.0ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161107173116"]]
+  [1m[35m (15.6ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2016-12-04 02:40:59 +0100
+DEPRECATION WARNING: ActiveRecord::Base.raise_in_transactional_callbacks= is deprecated, has no effect and will be removed without replacement. (called from raise_in_transactional_callbacks= at C:/RailsInstaller3-1-1/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/activerecord-5.0.0.1/lib/active_record/transactions.rb:283)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ResourcesController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 23ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-12-04 02:41:00 +0100
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 1175ms (Views: 1149.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/categories.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-12-04 02:41:01 +0100
+Started GET "/assets/resources.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-12-04 02:41:01 +0100
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-12-04 02:41:01 +0100
+Started GET "/assets/scaffolds.self-cc9bb6ef8f36679d7adfde4cd580f448354ffe39cfc7099c7aa0c4e7d494f534.css?body=1" for 127.0.0.1 at 2016-12-04 02:41:01 +0100
+Started GET "/assets/categories.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-12-04 02:41:01 +0100
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-12-04 02:41:01 +0100
+Started GET "/assets/resources.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-12-04 02:41:01 +0100
+Started GET "/signup" for 127.0.0.1 at 2016-12-04 02:41:06 +0100
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant ApplicationRecord):
+  
+app/models/user.rb:1:in `<top (required)>'
+app/controllers/users_controller.rb:17:in `new'
+  Rendering C:/RailsInstaller3-1-1/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering C:/RailsInstaller3-1-1/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered C:/RailsInstaller3-1-1/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering C:/RailsInstaller3-1-1/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered C:/RailsInstaller3-1-1/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendering C:/RailsInstaller3-1-1/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered C:/RailsInstaller3-1-1/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered C:/RailsInstaller3-1-1/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (1235.0ms)
+Started GET "/signup" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (0.0ms)
+  Rendered users/new.html.erb within layouts/application (31.3ms)
+Completed 200 OK in 203ms (Views: 158.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/categories.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/resources.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/scaffolds.self-cc9bb6ef8f36679d7adfde4cd580f448354ffe39cfc7099c7aa0c4e7d494f534.css?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/turbolinks.self-c5acd7a204f5f25ce7a1d8a0e4d92e28d34c9e2df2c7371cd7af88e147e4ad82.js?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/categories.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/resources.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-12-04 02:42:53 +0100
+Started GET "/signup" for 127.0.0.1 at 2016-12-04 02:42:56 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (3.0ms)
+  Rendered users/new.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 202ms (Views: 175.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2016-12-04 02:42:58 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (4.0ms)
+  Rendered users/new.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 197ms (Views: 170.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2016-12-04 02:43:01 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (3.0ms)
+  Rendered users/new.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 195ms (Views: 166.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2016-12-04 02:43:02 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (3.0ms)
+  Rendered users/new.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 193ms (Views: 164.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-12-04 02:43:03 +0100
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 168ms (Views: 141.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2016-12-04 02:43:04 +0100
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/_form.html.erb (3.0ms)
+  Rendered users/new.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 189ms (Views: 161.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2016-12-04 02:43:17 +0100
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"e1HjCEFh8U/ZbrO0n2BiCm56u5tSLH+rlg0p/1cgyoPHY3FTPh3U1KkVxmkE5crMMYwTQFwgJ9tf3kfWqpeFQw==", "user"=>{"name"=>"Martin", "email"=>"martin@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (1.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "Martin"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Martin"], ["email", "martin@test.com"], ["password_digest", "$2a$10$o7Z/xoaJsp..b/Kas2L3WeRP8H/qbwhd6e6szBvCs3nbaJWgnQr86"], ["created_at", 2016-12-04 01:43:17 UTC], ["updated_at", 2016-12-04 01:43:17 UTC]]
+  [1m[35m (6.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 127ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-12-04 02:43:17 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 163ms (Views: 131.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/resources/new" for 127.0.0.1 at 2016-12-04 02:43:21 +0100
+Processing by ResourcesController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering resources/new.html.erb within layouts/application
+  Rendered resources/_form.html.erb (11.0ms)
+  Rendered resources/new.html.erb within layouts/application (40.0ms)
+Completed 200 OK in 238ms (Views: 184.5ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2016-12-04 02:43:34 +0100
+Processing by CategoriesController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/new.html.erb within layouts/application
+  Rendered categories/_form.html.erb (3.0ms)
+  Rendered categories/new.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 193ms (Views: 159.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/categories" for 127.0.0.1 at 2016-12-04 02:43:40 +0100
+Processing by CategoriesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"r4Zs1K7AmEXrLkB0SVlQTnecYsmPkw8Pi6AhAd9ojpwTtP6P0by93ptVNanS3PiIKGrKEoGfV39Cc08oIt/BXA==", "category"=>{"name"=>"Mediaprogramming", "description"=>"test"}, "commit"=>"Create Category"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Mediaprogramming"], ["description", "test"], ["created_at", 2016-12-04 01:43:40 UTC], ["updated_at", 2016-12-04 01:43:40 UTC]]
+  [1m[35m (7.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/categories/1
+Completed 302 Found in 14ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2016-12-04 02:43:40 +0100
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering categories/show.html.erb within layouts/application
+  Rendered categories/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 165ms (Views: 135.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/resources/new" for 127.0.0.1 at 2016-12-04 02:43:42 +0100
+Processing by ResourcesController#new as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering resources/new.html.erb within layouts/application
+  Rendered resources/_form.html.erb (4.0ms)
+  Rendered resources/new.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 213ms (Views: 184.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/resources" for 127.0.0.1 at 2016-12-04 02:43:51 +0100
+Processing by ResourcesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hB5x3GEp0CTlsDCVxAXr1t5FkrLtTVToNefcZJYL3JU4LOOHHlX1v5XLRUhfgEMQgbM6aeNBDJj8NLJNa7yTVQ==", "resource"=>{"name"=>"Test", "description"=>"test", "link"=>"test", "user_id"=>"", "score"=>"", "last_modified"=>""}, "category_id"=>"1", "commit"=>"Create Resource"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "resources" ("name", "description", "link", "last_modified", "user_id", "score", "category_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Test"], ["description", "test"], ["link", "test"], ["last_modified", Sun, 04 Dec 2016], ["user_id", 1], ["score", 0], ["category_id", 1], ["created_at", 2016-12-04 01:43:51 UTC], ["updated_at", 2016-12-04 01:43:51 UTC]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/resources/1
+Completed 302 Found in 14ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/resources/1" for 127.0.0.1 at 2016-12-04 02:43:51 +0100
+Processing by ResourcesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mResource Load (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering resources/show.html.erb within layouts/application
+  [1m[36mCategory Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered resources/show.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 170ms (Views: 140.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/resources" for 127.0.0.1 at 2016-12-04 02:43:54 +0100
+Processing by ResourcesController#index as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering resources/index.html.erb within layouts/application
+  [1m[36mResource Load (0.0ms)[0m  [1m[34mSELECT "resources".* FROM "resources"[0m
+  [1m[36mCategory Load (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered resources/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 183ms (Views: 154.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/resources/1/like" for 127.0.0.1 at 2016-12-04 02:43:58 +0100
+Processing by ResourcesController#like as JS
+  Parameters: {"authenticity_token"=>"fofMyrqQ8oCYHZF0V4GfdRaM1Iw10QMf5Og0yef0dl3CtV6RxezXG+hm5KnMBDezSXp8VzvdW28tO1rgGkM5nQ==", "id"=>"1"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mResource Load (0.0ms)[0m  [1m[34mSELECT  "resources".* FROM "resources" WHERE "resources"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "resources" SET "score" = ?, "updated_at" = ? WHERE "resources"."id" = ?[0m  [["score", 1], ["updated_at", 2016-12-04 01:43:58 UTC], ["id", 1]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+  Rendering resources/like.js.erb
+  Rendered resources/like.js.erb (1.0ms)
+Completed 200 OK in 178ms (Views: 128.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2016-12-04 02:44:14 +0100
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-12-04 02:44:14 +0100
+Processing by ResourcesController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authorize rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login" for 127.0.0.1 at 2016-12-04 02:44:14 +0100
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 179ms (Views: 146.8ms | ActiveRecord: 0.0ms)
+
+

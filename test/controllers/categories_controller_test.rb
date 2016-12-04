@@ -1,24 +1,29 @@
 require 'test_helper'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
- 
+
   setup do
-	@category = categories(:one)
-	login_as(users(:one))
+    login_as(users(:one))
+    @category = categories(:one)
+    @valid_category_params = { name: @category.name, description: @category.description }
   end
 
   test "should get index" do
     get categories_url
     assert_response :success
-    assert_not_nil assigns(:categories)
+  end
+
+  test "should get new" do
+    get new_category_url
+    assert_response :success
   end
 
   test "should create category" do
     assert_difference('Category.count') do
-      post categories_url, params: { description: @category.description, name: @category.name }
+      post categories_url, params: { category: @valid_category_params}
     end
 
-    assert_redirected_to category_url(@category)
+    assert_redirected_to category_url(Category.last)
   end
 
   test "should show category" do
@@ -32,13 +37,13 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update category" do
-    patch category_url(@category), params: { description: @category.description, name: @category.name }
-    assert_redirected_to category_path(assigns(:category))
+    patch category_url(@category), params: { category: { name: @category.name, description: @category.description } }
+    assert_redirected_to category_url(@category)
   end
 
   test "should destroy category" do
     assert_difference('Category.count', -1) do
-      delete category_url(@category), id: @category
+      delete category_url(@category)
     end
 
     assert_redirected_to categories_url

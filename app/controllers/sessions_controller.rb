@@ -1,25 +1,20 @@
 class SessionsController < ApplicationController
- 
+  #skip_before_action :authorize, only: [:new, :create]
   def new
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    # If the user exists AND the password entered is correct.
-    if user && user.authenticate(params[:password])
-      # Save the user id inside the browser cookie. This is how we keep the user 
-      # logged in when they navigate around our website.
-      session[:user_id] = user.id
-      redirect_to '/'
+    user = User.find_by(name: params[:session][:name])
+    if user.try(:authenticate, params[:session][:password])
+      log_in(user)
+      redirect_to root_url
     else
-    # If user's login doesn't work, send them back to the login form.
-      redirect_to '/login'
+      redirect_to login_url, alert: "Invalid user/password combination"
     end
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to '/login'
+    log_out
+    redirect_to root_url, notice: "Logged out"
   end
-
 end

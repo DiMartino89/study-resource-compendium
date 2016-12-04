@@ -3,7 +3,7 @@ require 'test_helper'
 class ResourcesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @resource = resources(:one)
-	login_as(users(:one))
+    login_as(users(:one))
   end
 
   test "should get index" do
@@ -18,19 +18,23 @@ class ResourcesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create resource" do
     assert_difference('Resource.count') do
-      post resources_url, params: { category_id: @resource.category_id, description: @resource.description, last_modified: @resource.last_modified, link: @resource.link, name: @resource.name }
+      post resources_url, params: { resource: { name: @resource.name, description: @resource.description, link: @resource.link, category_id: @resource.category_id, score: @resource.score, last_modified: @resource.last_modified, user_id: @resource.user_id } }
     end
-
     assert_redirected_to resource_path(assigns(:resource))
   end
 
+  test "should show resource" do
+    get resource_url(@resource)
+    assert_response :success
+  end
+
   test "should get edit" do
-    get get edit_resource_url(@resource)
+    get edit_resource_url(@resource)
     assert_response :success
   end
 
   test "should update resource" do
-    patch resource_url(@resource), params: { category_id: @resource.category_id, description: @resource.description, last_modified: @resource.last_modified, link: @resource.link, name: @resource.name }
+    patch resource_url(@resource), params: { resource: { name: @resource.name, description: @resource.description, link: @resource.link, category_id: @resource.category_id, score: @resource.score, last_modified: @resource.last_modified, user_id: @resource.user_id } }
     assert_redirected_to resource_url(@resource)
   end
 

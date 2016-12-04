@@ -1,11 +1,10 @@
+
+<h1>Resource Details</h1>
+<p id="notice"><%= notice %></p>
+
 <p>
   <strong>Name:</strong>
   <%= @resource.name %>
-</p>
-
-<p>
-  <strong>Score:</strong>
-  <%= @resource.score %>
 </p>
 
 <p>
@@ -25,13 +24,6 @@
 </p>
 <% end %>
 
-<% if @resource.file %>
-<p>
-  <strong>File:</strong>
-  <a href="<%= @resource.file %>" target="_blank">Open File</a>
-</p>
-<% end %>
-
 <p>
   <strong>Last modified:</strong>
   <%= @resource.last_modified %>
@@ -39,7 +31,12 @@
 
 <p>
   <strong>Owner:</strong>
-  <%= User.find(@resource.owner_id).name %>
+  <%= User.find(@resource.user_id).name %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @resource.score %>
 </p>
 
 <%= link_to 'Edit', edit_resource_path(@resource) %> |

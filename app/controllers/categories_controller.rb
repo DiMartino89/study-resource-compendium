@@ -1,8 +1,8 @@
 class CategoriesController < ApplicationController
+  #skip_before_action :authorize, only: [:participate, :show]
+  before_action :authorize
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
-  before_filter :authorize
-  
   # GET /categories
   # GET /categories.json
   def index

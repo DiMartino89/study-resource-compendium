@@ -17,14 +17,18 @@ class ActionDispatch::IntegrationTest
   include Capybara::DSL
 
   def login_as(user)
-	post '/login', params: {session: { email:  user.email, password: 'secret'}}
+    post login_url, params: {session: { name:  user.name, password: 'secret'}}
   end
-  
+
+  def logout
+    delete logout_url
+  end
+
   def login_for_capybara(user)
-    get login_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password_digest
-    click_button "Login"
+    visit login_path
+    fill_in "Name", with: user.name
+    fill_in "Password", with: 'secret'
+    click_button "Log in"
   end
 
 

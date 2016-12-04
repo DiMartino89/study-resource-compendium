@@ -1,4 +1,6 @@
-<h1>Listing Resources</h1>
+<p id="notice"><%= notice %></p>
+
+<h1>Resources</h1>
 
 <table>
   <thead>
@@ -6,11 +8,10 @@
 	  <th>Score</th>
       <th>Name</th>
       <th>Description</th>
-      <th>Category</th>
       <th>Link</th>
-	  <th>File</th>
-      <th>Last modified</th>
+	  <th>Category</th>
 	  <th>Owner</th>
+	  <th>Last Modified</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,26 +19,21 @@
   <tbody>
     <% @resources.each do |resource| %>
       <tr>
-	      <td>
+		<td>
 	      <%= button_to "+", like_path(resource), remote: true, id: "resourceLike-#{resource.id}"%>
 	      <p id="resourceScore-<%= resource.id %>"><%= resource.score %></p>
 	      <%= button_to "-", dislike_path(resource), remote: true, id: "resourceDislike-#{resource.id}" %>
-	      </td>
+	    </td>
         <td><%= resource.name %></td>
         <td><%= resource.description %></td>
-        <td><%= Category.find(resource.category_id).name %></td>
 		<td>
 			<% unless resource.link == nil || resource.link.empty? %>
 				<a href="<%= resource.link %>" target="_blank">Open Link</a>
 			<% end %>	
-		</td>	
-		<td>
-			<% if resource.file %>
-				<a href="<%= resource.file %>" target="_blank">Open Link</a>
-			<% end %>
 		</td>
-        <td><%= resource.last_modified %></td>
-		<td><%= User.find(resource.owner_id).name %></td>
+        <td><%= Category.find(resource.category_id).name %></td>
+		<td><%= User.find(resource.user_id).name %></td>
+		<td><%= resource.last_modified %></td>
         <td><%= link_to 'Show', resource %></td>
         <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
         <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -45,7 +41,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<%= link_to 'New Resource', new_resource_path %>
-<a href="http://localhost:3000/categories">Show Categories</a>
