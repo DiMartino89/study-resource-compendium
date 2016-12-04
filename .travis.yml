@@ -7,6 +7,7 @@ rvm:
 # uncomment and edit the following line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
 # Use manual install to detecting for current system (travis - linux)
+install: gem install rack -v '2.0.1'
 install: bundle install --jobs=3 --retry=3
 # Old Rails, therefore manual db:migrate for travis:
 # rake test to get failed test instead of error for now
