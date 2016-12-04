@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 # Avoid polling for changes
-gem 'wdm', '>= 0.1.0'
+# gem 'wdm', '>= 0.1.0'
 # Controller testing
 gem 'rails-controller-testing'
 
